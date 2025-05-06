@@ -1,0 +1,52 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo geral do body (fundo cinza claro) */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* fundo cinza claro */
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* Centralizar título */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Container da lista */
+  #posts-list {
+    max-width: 600px;
+    margin: 0 auto; /* centraliza a lista na página */
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  /* Estilo dos itens da lista */
+  #posts-list li {
+    background-color: white;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efeito no hover */
+  #posts-list li:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Mensagem de erro */
+  .error {
+    text-align: center;
+    color: red;
+    margin-top: 20px;
+    font-weight: bold;
+  }

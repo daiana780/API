@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consumir API com Fetch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      background-color: white;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lista de Posts - JSONPlaceholder</h1>
+  <ul id="posts-list">Carregando...</ul>
+
+  <script>
+    // URL da API
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+
+    // Seleciona elemento onde os posts serão inseridos
+    const postsList = document.getElementById('posts-list');
+
+    // Requisição com fetch
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Erro HTTP! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Limpa a mensagem de carregamento
+        postsList.innerHTML = '';
+
+        // Percorre os dados e cria os elementos <li>
+        data.forEach(post => {
+          const li = document.createElement('li');
+          li.textContent = post.title;
+          postsList.appendChild(li);
+        });
+      })
+      .catch(error => {
+        // Tratamento de erro
+        postsList.innerHTML = '';
+        postsList.classList.add('error');
+        postsList.textContent = 'Ocorreu um erro ao carregar os posts: ' + error.message;
+      });
+  </script>
+
+</body>
+</html>
